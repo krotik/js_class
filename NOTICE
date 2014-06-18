@@ -1,0 +1,6 @@
+class.js - Class objects with constructor and multi-inheritance support
+Copyright (c) 2014 Matthias Ladkau
+
+This software contains code which is based on
+Simple JavaScript Inheritance by John Resig
+http://ejohn.org/blog/simple-javascript-inheritance/
