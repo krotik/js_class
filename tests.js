@@ -13,9 +13,13 @@ test("Test Inheritence", function() {
         init : function (res_add) {
             res += res_add;
         },
-        
+
         test1 : function(to_add) {
             return "xx" + to_add;
+        },
+
+        test2 : function(to_add) {
+            return "yy" + to_add;
         }
     });
 
@@ -35,7 +39,7 @@ test("Test Inheritence", function() {
         init : function (res_add) {
             this._super(res_add + this.b);
         },
-        
+
         test1 : function(to_add) {
             return this._super("yy" + to_add + this.b);
         }
@@ -56,9 +60,20 @@ test("Test Inheritence", function() {
 
     // Test function execution
     ok( oc.test1("zz") === "xxyyzzb", "Test function execution with multi inheritance" );
-    
+
     // Test instanceof
-    ok( oc instanceof c, "Test instanceof direct class" ) 
-    ok( oc instanceof a, "Test instanceof superclass" ) 
-    ok(!(oc instanceof b), "Test instanceof mixin class" ) 
+    ok( oc instanceof c, "Test instanceof direct class" );
+    ok( oc instanceof a, "Test instanceof superclass" );
+    ok(!(oc instanceof b), "Test instanceof mixin class" );
+
+    d = a.create({}, {}, {
+        test2 : function(to_add) {
+            return "yy" + this._super(to_add);
+        }
+    });
+
+    od = new d("d");
+
+    ok( od.test2("zz") === "yyyyzz", "Test function with overwritten function in super super class" );
+
 });
