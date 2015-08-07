@@ -113,7 +113,7 @@ var Class = function() {};
         for (var i = 0; i < arguments.length; i++) {
             var properties = arguments[i];
 
-            // Check if the given mixin is a constructor funtion
+            // Check if the given mixin is a constructor function
             if (typeof properties === "function") {
                 // Use the prototype as properties
                 properties = properties.prototype;
