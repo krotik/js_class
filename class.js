@@ -113,6 +113,11 @@ var Class = function() {};
         for (var i = 0; i < arguments.length; i++) {
             var properties = arguments[i];
 
+            if (properties === undefined) {
+                console.log("Warning: Undefined mixin");
+                continue;
+            }
+
             // Check if the given mixin is a constructor function
             if (typeof properties === "function") {
                 // Use the prototype as properties
